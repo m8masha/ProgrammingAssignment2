@@ -1,0 +1,16 @@
+{
+    "contents" : "## Caching the Data of Inversed Matrix\n\n## 1.1 makeCacheMatrix - this function creates a special object that can cache its inverse\n\nmakeCacheMatrix <- function(x = matrix()) {\n    s <- NULL # s will be my \"solved\" matrix\n    set <- function(y){ # takes an input matrix\n      x <<- y # saves the input matrix\n      s <<- NULL # reserts the s to NULL (when a new object is generated)\n    }\n   \n    #next three functions will be used by cacheSolve to get data for s:\n     \n    get <- function() {x} # returns the value of original matrix\n    setSolvedMatrix <- function(solve) {s <<- solve} # will be called by cacheSolve() during the first access\n                                                     # and will store the value using super-assignment (i.e. \"<<-\")\n    getSolvedMatrix <- function() {s} # this will return the cached value to cacheSolve on subsequent accesses\n    list(set = set, get = get, setSolvedMatrix = setSolvedMatrix, getSolvedMatrix = getSolvedMatrix) # a list of internal functions ('methods')\n}\n\n    \n## 1.2 cacheSolve - this function computes the inverse of the special \"matrix\" returned by makeCacheMatrix above, \n# if the inverse has already been calculated (and the matrix has not changed), then the cachesolve retrieves the inverse from the cache.\ncacheSolve <- function(x, ...) { # the input x is an object created by makeVector\n        s <- x$getSolvedMatrix() # accesses the object 'x' and gets the value of the mean\n        if(!is.null(s)) { #'if s isn't NULL, then...'\n          \n          message(\"getting inversed matrix\")\n          return(s) # returns the inversed matrix (that has been 'solved' previously)\n        }\n        data <- x$get() # we reach this code if s=NULL. We get the data of original matrix\n        s <- solve(data, ...) # 'solve' (i.e. inverse) the original matrix\n        x$setSolvedMatrix(s) # store the inversed matrix\n        s # return the inversed matrix to the code that called this function\n}\n",
+    "created" : 1418892804905.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "23663066",
+    "id" : "FB92EDA3",
+    "lastKnownWriteTime" : 1418903317,
+    "path" : "~/ProgrammingAssignment2/cachematrix.R",
+    "project_path" : "cachematrix.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

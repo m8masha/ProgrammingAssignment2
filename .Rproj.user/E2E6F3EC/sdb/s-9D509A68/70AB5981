@@ -1,0 +1,17 @@
+{
+    "contents" : "t <- matrix(c(30, 96, 86, 72, 74, 85, 87, 46, 57), nrow=3, ncol=3, byrow = TRUE)\n\n> A = matrix( \nnrow=2,              # number of rows \nncol=3,              # number of columns \nbyrow = TRUE)        # fill matrix by rows \n\nset.seed(77)\nm <- matrix(sample.int(100,size=16,replace=TRUE), nrow=4)\nd <- makeCacheMatrix(m)\ncacheSolve(d)\n\nd1 <- matrix(c(30, 778, 86, 720, 74, 815, 87, 46, 57), nrow=3, ncol=3, byrow = TRUE)\nd <- makeCacheMatrix(d1)\ncacheSolve(d)",
+    "created" : 1418900194612.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "1934045565",
+    "id" : "70AB5981",
+    "lastKnownWriteTime" : 1148219457,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
