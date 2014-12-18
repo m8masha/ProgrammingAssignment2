@@ -29,7 +29,7 @@ cacheSolve <- function(x, ...) { # the input x is an object created by makeVecto
           return(s) # returns the inversed matrix (that has been 'solved' previously)
         }
         data <- x$get() # we reach this code if s=NULL. We get the data of original matrix
-        s <- solve(data, ...) # 'solve' (i.e. inverse) the original matrix
-        x$setSolvedMatrix(s) # store the inversed matrix
-        s # return the inversed matrix to the code that called this function
+        s <- solve(data, ...) # 'solves' (i.e. inverses) the original matrix
+        x$setSolvedMatrix(s) # stores the inversed matrix
+        s # returns the inversed matrix to the code that called this function
 }
