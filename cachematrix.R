@@ -15,12 +15,14 @@ makeCacheMatrix <- function(x = matrix()) {
     setSolvedMatrix <- function(solve) {s <<- solve} # will be called by cacheSolve() during the first access
                                                      # and will store the value using super-assignment (i.e. "<<-")
     getSolvedMatrix <- function() {s} # this will return the cached value to cacheSolve on subsequent accesses
-    list(set = set, get = get, setSolvedMatrix = setSolvedMatrix, getSolvedMatrix = getSolvedMatrix) # a list of internal functions ('methods')
+    list(set = set, get = get, setSolvedMatrix = setSolvedMatrix, getSolvedMatrix = getSolvedMatrix) # a list of internal
+                                                                                                     # functions ('methods')
 }
 
     
-## 1.2 cacheSolve - this function computes the inverse of the special "matrix" returned by makeCacheMatrix above, 
-# if the inverse has already been calculated (and the matrix has not changed), then the cachesolve retrieves the inverse from the cache.
+## 1.2 cacheSolve - this function computes the inverse of the special "matrix" returned by makeCacheMatrix above, if the 
+## inverse has already been calculated (and the matrix has not changed), then the cachesolve retrieves the inverse 
+## from the cache.
 cacheSolve <- function(x, ...) { # the input x is an object created by makeVector
         s <- x$getSolvedMatrix() # accesses the object 'x' and gets the value of the mean
         if(!is.null(s)) { #'if s isn't NULL, then...'
